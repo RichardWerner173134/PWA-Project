@@ -1,5 +1,3 @@
-import HelloWorld from './Components/HelloWorld';
-import CounterExample from './Components/CounterExample';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import {
@@ -8,39 +6,46 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Home from './Components/Views/Home';
+import About from './Components/Views/About';
+import HelloWorld from './Components/Views/HelloWorld';
+import CounterExample from './Components/Views/CounterExample';
+import ProductList from './Components/Views/ProductList';
 
 function App() {
   return (
     <div>
-      <Header />
-      <HelloWorld name='Richard' />
-
-
-
       <Router>
-        <ul>
-          <li>
-            <Link to="/" className='text-blue-500'>Home</Link>
-          </li>
-          <li>
-            <Link to="/about" className='text-blue-500'>About</Link>
-          </li>
-        </ul>
-        <Routes>
-          <Route 
-            path="/"
-            element={<h1 className='font-bold text-2xl'>This is a Homepage</h1>}> 
-          </Route>
-          <Route 
-            path="/about"
-            element={<h1 className='font-bold text-2xl'>About us</h1>}>
-          </Route>
-        </Routes>
+        <Header />
+        <div className='p-3'>
+          <Routes>
+            <Route 
+              path="/"
+              element={<Home />}> 
+            </Route>
+            <Route 
+              path="/about"
+              element={<About />}>
+            </Route>
+            <Route
+              path="/hello-world"
+              element={<HelloWorld />}>
+            </Route>
+            <Route
+              path="/counter-example"
+              element={<CounterExample />}>
+            </Route>
+            <Route
+              path="/products"
+              element={<ProductList />}>
+            </Route>
+          </Routes>
+        </div>
+        <Footer />
       </Router>
 
 
-      <CounterExample />
-      <Footer />
+     
     </div>  
   );
 }
