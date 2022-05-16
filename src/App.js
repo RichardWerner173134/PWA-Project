@@ -10,7 +10,9 @@ import Home from './Components/Views/Home';
 import About from './Components/Views/About';
 import HelloWorld from './Components/Views/HelloWorld';
 import CounterExample from './Components/Views/CounterExample';
-import ProductList from './Components/Views/ProductList';
+import BeitragList from './Components/Views/BeitragList';
+import Beitrag from './Components/Views/Beitrag';
+import Login from './Components/Views/UserAuth/Login';
 
 function App() {
   return (
@@ -36,9 +38,17 @@ function App() {
               element={<CounterExample />}>
             </Route>
             <Route
-              path="/products"
-              element={<ProductList />}>
+              path="/beitraege/:id"
+              element={<Beitrag />}>
             </Route>
+            <Route
+              path="/beitraege"
+              element={<BeitragList />}>
+            </Route>
+            <Route
+              path="/login"
+              element={<Login />}>
+              </Route>
           </Routes>
         </div>
         <Footer />
