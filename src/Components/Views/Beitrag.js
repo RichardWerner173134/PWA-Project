@@ -17,7 +17,7 @@ function Beitrag(){
             .then(response => {
                 setBeitrag(response.data);
             });       
-    }, []);
+    }, [url]);
 
     if(beitrag){
         content = 

@@ -1,5 +1,4 @@
 import React from 'react';
-import CounterExample from './CounterExample';
 
 function Home(){
     return (

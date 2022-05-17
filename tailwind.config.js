@@ -1,9 +1,9 @@
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
-    extend: {
-      'black-t-50': 'rgba(0,0,0,0.5)'
-    },
+    extend: {},
   },
-  plugins: [],
+  plugins: [require('daisyui')],
 }
