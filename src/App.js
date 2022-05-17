@@ -13,6 +13,7 @@ import CounterExample from './Components/Views/CounterExample';
 import BeitragList from './Components/Views/BeitragList';
 import Beitrag from './Components/Views/Beitrag';
 import Login from './Components/Views/UserAuth/Login';
+import Autoren from './Components/Views/Autoren';
 
 function App() {
   return (
@@ -48,7 +49,11 @@ function App() {
             <Route
               path="/login"
               element={<Login />}>
-              </Route>
+            </Route>
+            <Route
+              path="/autoren"
+              element={<Autoren />}>
+            </Route>
           </Routes>
         </div>
         <Footer />

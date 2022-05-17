@@ -53,6 +53,15 @@ function NavigationMenu(props){
                         Beiträge
                     </Link>
                 </li>
+                <li>
+                    <Link 
+                        to="/autoren" 
+                        className='text-blue-500 py-3 border-t border.b block'
+                        onClick={props.closeMenu}
+                    >
+                        Autoren
+                    </Link>
+                </li>
             </ul>
         </div>
     )
