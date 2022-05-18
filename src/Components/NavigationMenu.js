@@ -28,24 +28,6 @@ function NavigationMenu(props){
                 </li>
                 <li>
                     <Link 
-                        to="/hello-world" 
-                        className='text-blue-500 py-3 border-t border.b block'
-                        onClick={props.closeMenu}
-                    >
-                        Hello World Example
-                    </Link>
-                </li>
-                <li>
-                    <Link 
-                        to="/counter-example" 
-                        className='text-blue-500 py-3 border-t border.b block'
-                        onClick={props.closeMenu}
-                    >
-                        Counter Example
-                    </Link>
-                </li>
-                <li>
-                    <Link 
                         to="/beitraege" 
                         className='text-blue-500 py-3 border-t border.b block'
                         onClick={props.closeMenu}

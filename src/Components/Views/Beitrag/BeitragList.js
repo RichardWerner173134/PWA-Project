@@ -20,16 +20,16 @@ function BeitragList() {
     if (!beitraege) {
         content = <div>nothing</div>;
     } else {
-        content = beitraege.map(beitrag =>
-            <BeitragPreview
+        content = beitraege.map(beitrag => {    
+            return <BeitragPreview
                 key={beitrag.id}
                 beitrag={beitrag}
             />
-        );
+        });
     }
 
     return (
-        <div>
+        <div className="flex flex-col items-center w-screen">
             {content}
         </div>
     );

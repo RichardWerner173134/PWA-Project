@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 function BeitragPreview(props) {
     return (
-        <div className="card w-96 bg-base-100 shadow-xl m-6">
-
-            <div className="card-body p-3 border-b">
+        //<div className="card w-96 bg-base-100 shadow-xl m-6">
+        <div className="card w-3/5 bg-base-100 shadow-xl m-6">
+            <div className="card-body">
 
                 <div className="card-title">
                     <span>Titel: {props.beitrag.title}</span>
@@ -27,7 +27,7 @@ function BeitragPreview(props) {
                     <Link
                         to={`/beitraege/${props.beitrag.id}`}
                     >
-                        <button className="btn btn-primary">Check out!</button>
+                        <button className="btn btn-outline btn-primary">Weiterlesen!</button>
                     </Link>
                 </div>
             </div>
