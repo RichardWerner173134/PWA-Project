@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 function Autoren() {
-    const url = 'https://blog-rw.herokuapp.com/users';
+    const url = 'http://localhost:8080/users';
 
     const [users, setUsers] = useState([]);
 

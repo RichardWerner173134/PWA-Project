@@ -7,7 +7,7 @@ function BeitragList() {
     const url = `http://localhost:8080/beitraege`;
 
     const [beitraege, setBeitraege] = useState(null);
-    
+
     let content = null;
 
     useEffect(() => {
@@ -17,20 +17,20 @@ function BeitragList() {
             })
     }, [url]);
 
-    if(!beitraege){
+    if (!beitraege) {
         content = <div>nothing</div>;
     } else {
-        content = beitraege.map(beitrag => 
-                <BeitragPreview 
-                    key={beitrag.id} 
-                    beitrag={beitrag}
-                />
+        content = beitraege.map(beitrag =>
+            <BeitragPreview
+                key={beitrag.id}
+                beitrag={beitrag}
+            />
         );
     }
 
     return (
         <div>
-            { content }
+            {content}
         </div>
     );
 }
