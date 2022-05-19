@@ -1,16 +1,18 @@
 # bauen
-`npm install --save react`
-`npm install --save react-dom`
-`npm install`
+- `npm install --save react`
+- `npm install --save react-dom`
+- `npm install`
 
 # ausführen
 ## backend
-`git clone https://github.com/RichardWerner173134/BlogApi.git`
+- `git clone https://github.com/RichardWerner173134/BlogApi.git`
 
 ENTWEDER
 - ich lasse github immer eine aktuelle version bauen und als jar artifakt zur verfügung stellen ODER
-- ich baue ein Dockerimage 
-
+- url: https://github.com/RichardWerner173134/BlogApi/actions/workflows/main.yml
+    - letzten Build runterladen (auf `jar` drücken)
+    - Voraussetzung: Github als Contributor hinzugefügt
+- ausführen: `java -jar api-0.0.1-SNAPSHOT.jar`
 --> Der Server läuft auf http://localhost:8080
 Endpunkte suche ich später raus
 
@@ -22,9 +24,9 @@ Endpunkte suche ich später raus
 - password: 
 
 ## Frontend
-`npm run start`
+- `npm run start`
 
-läuft auf http://localhost:3000
+- läuft auf http://localhost:3000
 
 # css zeugs
 - https://daisyui.com/
