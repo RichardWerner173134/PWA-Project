@@ -9,6 +9,8 @@ import {
     Routes,
     Route
 } from "react-router-dom";
+import LoginComponent from "./Views/Auth/LoginComponent";
+import RegistrationComponent from "./Views/Auth/RegistrationComponent";
 
 function AppContent() {
     return (
@@ -38,6 +40,14 @@ function AppContent() {
                     path="/autoren/:id"
                     element={<AutorX />}>
                 </Route>
+                <Route
+                    path="/login"
+                    element={<LoginComponent />}
+                ></Route>
+                <Route
+                    path="/register"
+                    element={<RegistrationComponent />}
+                ></Route>
             </Routes>
         </div>
     )
