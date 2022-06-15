@@ -1,32 +1,66 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { setGlobalState } from "../../..";
 import axios from "axios";
-import { useFilePicker } from 'use-file-picker';
+import { useNavigate } from 'react-router-dom';
 
 const url = "http://localhost:8080/register";
 
 function RegistrationComponent() {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
-    const [openFileSelector, { filesContent, plainFiles }] = useFilePicker({
-        multiple: false,
-        readAs: "DataURL",
-        accept: [".jpg"]
-    });
+    const [selectedFile, setSelectedFile] = useState();
+    const [preview, setPreview] = useState();
 
-    const onSubmit = data => {
-        const body = {
-            username: data.username,
-            password: data.password
+    const navigate = useNavigate();
+
+    // create a preview as a side effect, whenever selected file is changed
+    useEffect(() => {
+        if (!selectedFile) {
+            setPreview(undefined);
+            return;
         }
 
-        axios.post(url, body)
+        const objectUrl = URL.createObjectURL(selectedFile);
+        setPreview(objectUrl);
+
+        // free memory when ever this component is unmounted
+        return () => URL.revokeObjectURL(objectUrl);
+    }, [selectedFile]);
+
+    const onSelectFile = e => {
+        if (!e.target.files || e.target.files.length === 0) {
+            setSelectedFile(undefined);
+            return;
+        }
+
+        setSelectedFile(e.target.files[0]);
+    }
+
+    const onSubmit = data => {
+        let formData = new FormData();
+        formData.append("username", data.username);
+        formData.append("password", data.password);
+        formData.append("vorname", data.firstName);
+        formData.append("nachname", data.secondName);
+        formData.append("profilbild", selectedFile, selectedFile.name);
+        let axiosConfig = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        };
+
+        axios.post(url, formData, axiosConfig)
             .then(resp => {
+                console.log("sucessfully registered: " + resp);
                 setGlobalState("isLoggedIn", true);
                 setGlobalState("jwtToken", resp.data);
+                setGlobalState("username", data.username);
+                setGlobalState("vorname", data.vorname);
+                setGlobalState("nachname", data.nachname);
+                navigate('/');
             }).catch(error => {
-                alert("Login fehlgeschlagen. Benutzername oder Passwort Falsch\n" + error)
+                alert("Registrierung fehlgeschlagen.\n" + error)
             })
     }
 
@@ -89,12 +123,15 @@ function RegistrationComponent() {
 
                         </div>
                         <div className="mt-4">
-                            <button className="btn btn-block btn-outline" onClick={() => openFileSelector()}>Profilbild auswählen</button>
-                            {!!filesContent.length && <img className="rounded pt-2 pb-2" src={filesContent[0].content} width="300" height="200" />}
+                            <label className="block">Profilbild</label>
+                            <input
+                                type="file"
+                                className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                                id="default_size"
+                                onChange={onSelectFile}
+                            />
                             <br />
-                            {plainFiles.map((file) => (
-                                <div key={file.name}>{file.name}</div>
-                            ))}
+                            {selectedFile && <img src={preview} height="300" width="400" />}
                         </div>
                         <div className="flex items-baseline justify-between">
                             <input type="submit" value="Registrieren" className="btn btn-block btn-primary px-6 py-2 mt-4 text-white bg-blue-600 rounded-lg hover:bg-blue-900"></input>

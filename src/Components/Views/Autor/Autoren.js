@@ -1,15 +1,17 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Autoren() {
     const url = 'http://localhost:8080/users';
 
     const [users, setUsers] = useState([]);
 
-    axios.get(url)
-        .then(response => {
-            setUsers(response.data);
-        });
+    useEffect(() => {
+        axios.get(url)
+            .then(response => {
+                setUsers(response.data);
+            });
+    }, []);
 
     return (
         <div class="overflow-x-auto">

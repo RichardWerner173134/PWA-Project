@@ -6,7 +6,10 @@ import {createGlobalState } from 'react-hooks-global-state';
 
 const { setGlobalState, useGlobalState } = createGlobalState({
   isLoggedIn: false,
-  jwtToken: ''
+  jwtToken: '',
+  username: '',
+  vorname: '',
+  nachname: ''
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
