@@ -1,21 +1,30 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-
+import { useGlobalState, setGlobalState } from "../../..";
 
 
 function Beitrag() {
+    const [username, setUsername] = useGlobalState("username");
     const { id } = useParams();
+    const [beitrag, setBeitrag] = useState();
 
     const url = `http://localhost:8080/beitraege/${id}`;
 
-    const [beitrag, setBeitrag] = useState();
     let content = <div>Beitrag not found</div>;
 
     useEffect(() => {
         axios.get(url)
             .then(response => {
                 setBeitrag(response.data);
+                let body = {
+                    date: new Date(),
+                    user: username
+                }
+                axios.post(`http://localhost:8080/beitraege/${id}/addView`, body)
+                    .then(resp => {
+                        console.log("Viewcount erhöht");
+                    })
             });
     }, [url]);
 
