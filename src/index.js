@@ -9,7 +9,8 @@ const { setGlobalState, useGlobalState } = createGlobalState({
   jwtToken: '',
   username: '',
   vorname: '',
-  nachname: ''
+  nachname: '',
+  profilbild: null
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -8,7 +8,6 @@ const url = "http://localhost:8080/authenticate";
 
 function LoginComponent() {
     const {register, handleSubmit, formState: { errors }} = useForm();
-
     const navigate = useNavigate();
 
     const onSubmit = data => {
@@ -20,7 +19,11 @@ function LoginComponent() {
         axios.post(url, body)
             .then(resp => {
                 setGlobalState("isLoggedIn", true);
-                setGlobalState("jwtToken", resp.data);
+                setGlobalState("jwtToken", resp.data.jwt);
+                setGlobalState("username", resp.data.userData.author);
+                setGlobalState("vorname", resp.data.userData.vorname);
+                setGlobalState("nachname", resp.data.userData.nachname);
+                setGlobalState("profilbild", resp.data.userData.profilbild);
                 navigate('/');
             }).catch(error => {
                 alert("Login fehlgeschlagen. Benutzername oder Passwort Falsch\n" + error)

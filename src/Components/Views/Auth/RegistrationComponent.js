@@ -38,12 +38,19 @@ function RegistrationComponent() {
     }
 
     const onSubmit = data => {
+        console.log("onsubmit");
+        console.log(data);
+        console.log(data.username);
+        console.log(data.password);
+        console.log(data.vorname);
+        console.log(data.nachname);
         let formData = new FormData();
         formData.append("username", data.username);
         formData.append("password", data.password);
-        formData.append("vorname", data.firstName);
-        formData.append("nachname", data.secondName);
+        formData.append("vorname", data.vorname);
+        formData.append("nachname", data.nachname);
         formData.append("profilbild", selectedFile, selectedFile.name);
+        console.log(formData);
         let axiosConfig = {
             headers: {
                 'content-type': 'multipart/form-data'
@@ -54,10 +61,11 @@ function RegistrationComponent() {
             .then(resp => {
                 console.log("sucessfully registered: " + resp);
                 setGlobalState("isLoggedIn", true);
-                setGlobalState("jwtToken", resp.data);
-                setGlobalState("username", data.username);
-                setGlobalState("vorname", data.vorname);
-                setGlobalState("nachname", data.nachname);
+                setGlobalState("jwtToken", resp.data.jwt);
+                setGlobalState("username", resp.data.userData.author);
+                setGlobalState("vorname", resp.data.userData.vorname);
+                setGlobalState("nachname", resp.data.userData.nachname);
+                setGlobalState("profilbild", resp.data.userData.profilbild);
                 navigate('/');
             }).catch(error => {
                 alert("Registrierung fehlgeschlagen.\n" + error)
@@ -86,7 +94,7 @@ function RegistrationComponent() {
                             <input
                                 type="text"
                                 name="vorname"
-                                {...register('vorname', { required: false })}
+                                {...register('vorname', { required: true })}
                                 placeholder="Vorname"
                                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                             />
@@ -96,7 +104,7 @@ function RegistrationComponent() {
                             <input
                                 type="text"
                                 name="nachname"
-                                {...register('nachname', { required: false })}
+                                {...register('nachname', { required: true })}
                                 placeholder="Nachname"
                                 className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600"
                             />

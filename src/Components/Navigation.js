@@ -23,11 +23,6 @@ function Navigation(){
         delay: 200,
     })
 
-    // className="fixed bg-white top-0 left-0 w-4/5 h-full z-50 shadow">
-    // className="bg-black-t-50 fixed top-0 left-0 w-full h-full z-50"
-
-
-
     return (
         <nav >
             <span className="text-xl">

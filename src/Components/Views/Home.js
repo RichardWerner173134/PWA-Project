@@ -7,6 +7,7 @@ function Home(){
     const username = useGlobalState("username")[0];
     const vorname = useGlobalState("vorname")[0];
     const nachname = useGlobalState("nachname")[0];
+    const profilbild = useGlobalState("profilbild")[0];
 
     return (
         <div>
@@ -16,6 +17,9 @@ function Home(){
             <p>Username: {username}</p>
             <p>Vorname: {vorname}</p>
             <p>Nachname: {nachname}</p>
+            <p>Profilbild:
+                <img src={profilbild}></img>
+            </p>
         </div>
     )
 }
