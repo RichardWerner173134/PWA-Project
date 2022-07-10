@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import {createGlobalState } from 'react-hooks-global-state';
-import * as serviceWorker from "./serviceWorker";
+import * as serviceWorker from "./sw-registration";
 
 const { setGlobalState, useGlobalState } = createGlobalState({
   isLoggedIn: false,

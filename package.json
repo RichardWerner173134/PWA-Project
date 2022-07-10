@@ -24,8 +24,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && npm run bs",
-    "bs": "node ./src/sw-build.js",
+    "build": "react-scripts build && npm run build-sw",
+    "bs": "npm run build && serve -s build",
+    "build-sw": "node ./src/sw-build.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
