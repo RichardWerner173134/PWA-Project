@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import {createGlobalState } from 'react-hooks-global-state';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+import * as serviceWorker from "./serviceWorker";
 
 const { setGlobalState, useGlobalState } = createGlobalState({
   isLoggedIn: false,
@@ -14,8 +14,6 @@ const { setGlobalState, useGlobalState } = createGlobalState({
   profilbild: null
 });
 
-const serviceWorker = null;
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -24,7 +22,7 @@ root.render(
   </React.StrictMode>
 );
 
-serviceWorkerRegistration.register();
+serviceWorker.register();
 
 
 export {useGlobalState, setGlobalState };
