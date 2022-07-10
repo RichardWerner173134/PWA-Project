@@ -25,6 +25,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "bs": "react-scripts build && serve -s build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
