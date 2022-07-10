@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import {createGlobalState } from 'react-hooks-global-state';
-import * as serviceWorker from "./sw-registration";
+import {createGlobalState } from 'react-hooks-global-state'; 
 
 const { setGlobalState, useGlobalState } = createGlobalState({
   isLoggedIn: false,
@@ -21,8 +20,5 @@ root.render(
     
   </React.StrictMode>
 );
-
-serviceWorker.register();
-
 
 export {useGlobalState, setGlobalState };
