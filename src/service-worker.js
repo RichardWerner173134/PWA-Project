@@ -12,27 +12,44 @@ import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { CacheFirst } from 'workbox-strategies';
+import { StaleWhileRevalidate } from 'workbox-strategies';
 import { CacheableResponsePlugin} from 'workbox-cacheable-response';
+
+const hostFrontend = "localhost:3000";
+const hostBackend = "localhost:8080";
+const isInPrecacheAssets = url => url.host.startsWith(hostFrontend) && (url.pathname.endsWith(".png")|| url.pathname.endsWith(".ico"));
+const isCacheApiRequests = url => url.host.startsWith(hostBackend) && 
+    (url.pathname.endsWith("/beitraege") || url.pathname.endsWith("/users"));
 
 clientsClaim();
 precacheAndRoute(self.__WB_MANIFEST);
 
 registerRoute(
   ({url}) => {
-    console.log(url);
-    return url.pathname.endsWith("/beitraege") 
-    || url.pathname.endsWith("/users" 
-    || url.pathname.endsWith("/img")
-    || url.pathname.endsWith(".png"))
+    let isCached = isInPrecacheAssets(url);
+    if(isCached) console.log("caching resource in precache: " + url);
+    return isCached;
   },
   new CacheFirst({
-    cacheName: 'api',
-    plugins: [
-      new ExpirationPlugin({ maxEntries: 50 }),
-    ],
+    cacheName: 'precache'
   })
 );
 
-self.addEventListener("fetch", e => {
-  console.log(e);
-})
+registerRoute(
+  ({url}) => {
+    let isCached = isCacheApiRequests(url);
+    if(isCached) console.log("caching resource in apicache: " + url);    
+    return isCached;
+  },
+  new CacheFirst({
+    cacheName: 'apicache',
+    plugins: [
+      new ExpirationPlugin({
+        maxAgeSeconds: 10
+      })
+    ]
+  }),
+  'GET'
+);
+
+
