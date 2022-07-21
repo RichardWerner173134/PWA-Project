@@ -23,7 +23,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && serve -s build",
+    "build": "react-scripts build && npm run build-sw && serve -s build",
+    "build-sw": "node ./src/sw-build.js",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
@@ -48,6 +49,7 @@
   "devDependencies": {
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.13",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "^3.0.24",
+    "workbox-build": "^6.5.3"
   }
 }
