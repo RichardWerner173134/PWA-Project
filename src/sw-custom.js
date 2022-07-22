@@ -1,3 +1,7 @@
+const offlineHTML = `<h1>You're offline!</h1>`;
+const hostFrontend = "localhost:3000";
+const hostBackend = "localhost:8080";
+
 if (typeof importScripts === "function") {
   // eslint-disable-next-line no-undef
   importScripts(
@@ -13,43 +17,15 @@ if (typeof importScripts === "function") {
   }
 }
 
-
-self.addEventListener("fetch", e => {
-  let url = e.request.url;
-  
-  if(url.match(/http:\/\/localhost:8080\/beitraege\/[0-9]+$/)){
-    let id = url.split("/")[4];
-    caches.open("apicache").then(cache => {
-      cache.keys().then(key => {
-        key.forEach((k, i) => {
-          console.log(k);
-          console.log(i);
-        });
-      });
-      return cache;
-    }).then(cache => {
-      caches.has("apicache").then(hasCache => {
-        console.log("apicache found: " + hasCache);
-      });
-    });
-  }
-})
-
 function applyCustomCachingStrategies() {
-  const hostFrontend = "localhost:3000";
-  const hostBackend = "localhost:8080";
-  const isCacheApiRequests = url => url.host.startsWith(hostBackend) &&
-    (url.pathname.endsWith("/beitraege") || url.pathname.endsWith("/users"));
-
-  
   workbox.routing.registerRoute(
     ({ url }) => {
-      let isCached = isCacheApiRequests(url);
-      if (isCached) console.log("caching resource in apicache: " + url);
+      let isCached = url.href.match(/http:\/\/localhost:8080\/(beitraege|users)$/);
+      if (isCached) console.log("caching resource in collectionCache: " + url);
       return isCached;
     },
     new workbox.strategies.StaleWhileRevalidate({
-      cacheName: 'apicache',
+      cacheName: 'collectionCache',
       plugins: [
         new workbox.expiration.ExpirationPlugin({
           maxAgeSeconds: 60 * 5
@@ -59,4 +35,58 @@ function applyCustomCachingStrategies() {
     'GET'
   );
 
+  workbox.routing.registerRoute(
+    ({ url }) => {
+      let isCached = url.href.match(/http:\/\/localhost:8080\/beitraege\/[0-9]+$/);
+      if (isCached) console.log("caching resource in singleBeitragCache: " + url);
+      return isCached;
+    },
+    new workbox.strategies.CacheFirst({
+      cacheName: 'singleBeitragCache',
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 5,
+          maxAgeSeconds: 60 * 5
+        }),
+      ]
+    }),
+    'GET'
+  );
+
+  workbox.routing.registerRoute(
+    ({ url }) => {
+      let isCached = url.href.match(/http:\/\/localhost:8080\/users\/[a-zA-Z0-9]+$/);
+      if (isCached) console.log("caching resource in singleUsersCache: " + url);
+      return isCached;
+    },
+    new workbox.strategies.CacheFirst({
+      cacheName: 'singleUsersCache',
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 5,
+          maxAgeSeconds: 60 * 5
+        }),
+      ]
+    }),
+    'GET'
+  );
+
+
+  workbox.routing.registerRoute(
+    ({ url }) => {
+      let isCached = url.href.match(/http:\/\/localhost:8080\/users\/admin\/img$/);
+      if (isCached) console.log("caching resource in imgCache: " + url);
+      return isCached;
+    },
+    new workbox.strategies.StaleWhileRevalidate({
+      cacheName: 'imgCache',
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 5,
+          maxAgeSeconds: 60 * 5
+        }),
+      ]
+    }),
+    'GET'
+  );
 }
