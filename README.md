@@ -25,6 +25,10 @@ Endpunkte suche ich später raus
 
 ## Frontend
 - `npm run start`
+    - zum Starten des Frontends ohne ServiceWorker
+- `npm run build`
+    - zum Starten des Frontends mit ServiceWorker
+    - dauert etwas länger
 
 - läuft auf http://localhost:3000
 
