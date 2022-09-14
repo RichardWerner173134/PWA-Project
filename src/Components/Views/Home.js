@@ -9,17 +9,31 @@ function Home(){
     const nachname = useGlobalState("nachname")[0];
     const profilbild = useGlobalState("profilbild")[0];
 
+
+    if (isLoggenIn == false) {
+        return (
+            <div>
+                <h1 className='font-bold text-2xl'>Herzlich willkommen zu der besten Blog-Webseite, die Sie je gesehen haben!</h1>
+                <p>Profilbild:
+                    <img src={profilbild}></img>
+                </p>
+            </div>
+        )
+    }
+
+    else
+
     return (
         <div>
             <h1 className='font-bold text-2xl'>This is a Homepage</h1>
-            <p>Eingeloggt: {isLoggenIn == false ? 'Nein' : 'Ja'}</p>
-            <p>jwt: {jwtToken == '' ? 'Nicht gesetzt' : jwtToken}</p>
+            <p>Eingeloggt als:</p>
             <p>Username: {username}</p>
             <p>Vorname: {vorname}</p>
             <p>Nachname: {nachname}</p>
             <p>Profilbild:
                 <img src={profilbild}></img>
             </p>
+            <p>jwt ist: {jwtToken == '' ? 'Nicht gesetzt' : jwtToken}</p>
         </div>
     )
 }

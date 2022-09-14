@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 function Autoren() {
     const url = 'http://localhost:8080/users';
@@ -27,7 +28,13 @@ function Autoren() {
                     {
                         users.map(user =>
                             <tr class="hover">
-                                <td>{user.author}</td>
+                                <td>                             
+                                    <Link
+                                        to={`/autoren/${user.author}`}>
+                                        {user.author}
+                                    </Link>
+                                </td>
+
                                 <td>{user.vorname}</td>
                                 <td>{user.nachname}</td>
                             </tr>
