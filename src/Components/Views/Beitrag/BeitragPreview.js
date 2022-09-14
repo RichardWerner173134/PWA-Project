@@ -17,6 +17,9 @@ function BeitragPreview(props) {
                     <span>Author: {props.beitrag.author}</span>
                 </div>
                 <div>
+                    <span>Verfasst am: {props.beitrag.creationTime}</span>
+                </div>
+                <div>
                     <span>Vorschau:
                         {
                             ' '.concat(props.beitrag.content.substring(0, 80)).concat('...')

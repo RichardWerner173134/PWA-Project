@@ -1,5 +1,3 @@
-const offlineHTML = `<h1>You're offline!</h1>`;
-const hostFrontend = "localhost:3000";
 const hostBackend = "localhost:8080";
 
 if (typeof importScripts === "function") {
@@ -74,7 +72,7 @@ function applyCustomCachingStrategies() {
 
   workbox.routing.registerRoute(
     ({ url }) => {
-      let isCached = url.href.match(/http:\/\/localhost:8080\/users\/admin\/img$/);
+      let isCached = url.href.match(/http:\/\/localhost:8080\/users\/[a-zA-Z0-9]+\/img$/);
       if (isCached) console.log("caching resource in imgCache: " + url);
       return isCached;
     },

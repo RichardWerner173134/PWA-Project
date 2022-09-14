@@ -47,6 +47,9 @@ function Beitrag() {
                     </span>
                 </div>
                 <div>
+                    <span>Verfasst am: {beitrag.creationTime}</span>
+                </div>
+                <div>
                     <span>Inhalt: {beitrag.content}</span>
                 </div>
                 <div>
