@@ -133,15 +133,6 @@ function NavigationMenu(props){
                     </li>
                     <li>
                         <Link 
-                            to="/register" 
-                            className='text-blue-500 py-3 border-t border.b block'
-                            onClick={props.closeMenu}
-                        >
-                            Registrieren
-                        </Link>
-                    </li>
-                    <li>
-                        <Link 
                             to="/logout" 
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
