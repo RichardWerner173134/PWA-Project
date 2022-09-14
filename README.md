@@ -26,6 +26,8 @@ Endpunkte suche ich später raus
 ## Frontend
 - `npm run start`
     - zum Starten des Frontends ohne ServiceWorker
+    
+- `npm install -g serve`
 - `npm run build`
     - zum Starten des Frontends mit ServiceWorker
     - dauert etwas länger
