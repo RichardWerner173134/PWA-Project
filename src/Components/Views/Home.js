@@ -14,8 +14,8 @@ function Home(){
         return (
             <div>
                 <h1 className='font-bold text-2xl'>Herzlich willkommen zu der besten Blog-Webseite, die Sie je gesehen haben!</h1>
-                <p>Profilbild:
-                    <img src={profilbild}></img>
+                <p>Gebaut mit Hilfe von React
+                    <img src="logo512.png"></img>
                 </p>
             </div>
         )
@@ -25,15 +25,11 @@ function Home(){
 
     return (
         <div>
-            <h1 className='font-bold text-2xl'>This is a Homepage</h1>
-            <p>Eingeloggt als:</p>
-            <p>Username: {username}</p>
-            <p>Vorname: {vorname}</p>
-            <p>Nachname: {nachname}</p>
+            <h1 className='font-bold text-2xl'>Wilkommen zurück {vorname} {nachname}</h1>
+            <p>Eingeloggt als: {username}</p>
             <p>Profilbild:
                 <img src={profilbild}></img>
             </p>
-            <p>jwt ist: {jwtToken == '' ? 'Nicht gesetzt' : jwtToken}</p>
         </div>
     )
 }
