@@ -7,7 +7,7 @@ function Header(){
             <Navigation />
 
             <span className="font-bold">
-                AppName
+                PWA Blog
             </span>
 
         </header>
