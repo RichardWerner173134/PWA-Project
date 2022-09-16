@@ -28,11 +28,18 @@ function Autoren() {
                     {
                         users.map(user =>
                             <tr class="hover">
-                                <td>                             
-                                    <Link
-                                        to={`/autoren/${user.author}`}>
-                                        {user.author}
-                                    </Link>
+                                <td>
+                                    <div class="avatar">
+                                        <div class="mask mask-squircle w-12 h-12">
+                                            <img src={`${user.author.profilBild}`}/>
+                                        </div>
+                                    </div>                             
+                                    <div class="tooltip tooltip-right" data-tip="Link führt zum Profil des Autors">
+                                        <Link
+                                            to={`/autoren/${user.author}`}>
+                                            {user.author}
+                                        </Link>
+                                    </div>
                                 </td>
 
                                 <td>{user.vorname}</td>
@@ -43,6 +50,8 @@ function Autoren() {
                 </tbody>
             </table>
         </div>
+
+
     )
 }
 
