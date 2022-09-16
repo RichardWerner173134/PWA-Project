@@ -33,9 +33,6 @@ function Beitrag() {
             <div
                 className="p-3 border-b hover:text-orange-200 hover:bg-red-400">
                 <div>
-                    <span>ID: {beitrag.id}</span>
-                </div>
-                <div>
                     <span>Titel: {beitrag.title}</span>
                 </div>
                 <div>

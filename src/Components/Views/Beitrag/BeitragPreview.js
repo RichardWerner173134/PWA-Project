@@ -11,9 +11,6 @@ function BeitragPreview(props) {
                     <span>Titel: {props.beitrag.title}</span>
                 </div>
                 <div>
-                    <span>ID: {props.beitrag.id}</span>
-                </div>
-                <div>
                     <span>Author: {props.beitrag.author}</span>
                 </div>
                 <div>
