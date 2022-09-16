@@ -22,27 +22,21 @@ function AutorX() {
 
     if (author) {
         content = <div>
-            <p>{author.author}</p>
-            <p>{author.vorname}</p>
-            <p>{author.nachname}</p>
-            <p>
-                <img src={author.profilBild}></img>
-            </p>
 
-            <div className="card w-96 bg-base-100 shadow-xl">
-            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-            <div className="card-body">
-            <h2 className="card-title">
-            Shoes!
-            <div className="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-            <div className="badge badge-outline">Fashion</div> 
-            <div className="badge badge-outline">Products</div>
+            <div className="card w-96 left-1/3 bg-neutral shadow-xl">
+                <figure><img src={author.profilBild} alt={author.author} /></figure>
+                    <div className="card-body items-center">
+                        <h2 className="card-title">
+                            {author.author}
+                            <div className="badge badge-secondary">{author.views}</div>
+                        </h2>
+                        <p>Hier könnte eine nützliche Information des Autors stehen.</p>
+                        <div className="card-actions justify-end">
+                            <div className="badge badge-outline">{author.vorname}</div> 
+                            <div className="badge badge-outline">{author.nachname}</div>
+                        </div>
+                    </div>
             </div>
-            </div>
-        </div>
 
         </div>;
     }
