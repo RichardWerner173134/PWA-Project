@@ -23,12 +23,11 @@ function AutorX() {
     if (author) {
         content = <div>
 
-            <div className="card w-96 left-1/3 bg-neutral shadow-xl">
+            <div className="card w-96 left-1/3 bg-orange-300 shadow-xl">
                 <figure><img src={author.profilBild} alt={author.author} /></figure>
                     <div className="card-body items-center">
                         <h2 className="card-title">
                             {author.author}
-                            <div className="badge badge-secondary">{author.views}</div>
                         </h2>
                         <p>Hier könnte eine nützliche Information des Autors stehen.</p>
                         <div className="card-actions justify-end">

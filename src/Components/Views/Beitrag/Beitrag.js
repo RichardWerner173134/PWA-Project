@@ -30,25 +30,30 @@ function Beitrag() {
 
     if (beitrag) {
         content =
-            <div
-                className="p-3 border-b hover:text-orange-200 hover:bg-red-400">
-                <div>
-                    <span>Titel: {beitrag.title}</span>
+            <div className="p-5 border-b bg-base-100 shadow-xl">
+                <div className="text-xl text-bold leading-5">
+                    Titel: {beitrag.title}
                 </div>
+                <br />
                 <div>
-                    <span>Author:
-                        <Link
-                            to={`/autoren/${beitrag.author}`}>
-                            {beitrag.author}
-                        </Link>
+                    <span>Autor:
+                        <div className="tooltip tooltip-right" data-tip="Profil anschauen">
+                            <Link
+                                to={`/autoren/${beitrag.author}`}>
+                                &nbsp;{beitrag.author}
+                            </Link>
+                        </div>
                     </span>
                 </div>
-                <div>
-                    <span>Verfasst am: {beitrag.creationTime}</span>
+                <br />
+                <div className="">
+                    <span>Verfasst am: {new Date(beitrag.creationTime).toLocaleString()}</span>
                 </div>
-                <div>
-                    <span>Inhalt: {beitrag.content}</span>
+                <br />
+                <div className="">
+                    <span>Inhalt: <br />{beitrag.content}</span>
                 </div>
+                <br />
                 <div>
                     <span>Anzahl Views: {beitrag.views}</span>
                 </div>
@@ -56,7 +61,7 @@ function Beitrag() {
     }
 
     return (
-        <div>{content}</div>
+        <div className="p-5">{content}</div>
     )
 }
 

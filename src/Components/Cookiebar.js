@@ -10,11 +10,11 @@ function Cookiebar() {
         content =
             <div className="card w-full bg-neutral text-neutral-content fixed bottom-0 block">
                 <div className="card-body items-center text-center">
-                    <h2 className="card-title text-4xl">Coooooooooooooooooookieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeees!</h2>
-                    <p className="text-2xl">We are using cookies for no reason.</p>
+                    <h2 className="card-title text-2xl">Hier könnten Ihre Cookiebar stehen!</h2>
+                    <p className="text-2xl">......</p>
                     <div className="card-actions justify-end">
-                        <button className="btn btn-primary" onClick={() => setShowCookies(false)}>Accept</button>
-                        <button className="btn btn-ghost" onClick={() => setShowCookies(false)}>Deny</button>
+                        <button className="btn btn-primary" onClick={() => setShowCookies(false)}>Akzeptieren</button>
+                        <button className="btn btn-ghost" onClick={() => setShowCookies(false)}>Ablehnen</button>
                     </div>
                 </div>
             </div>;

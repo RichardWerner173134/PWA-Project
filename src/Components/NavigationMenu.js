@@ -1,37 +1,37 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useGlobalState } from './..';
 
-function NavigationMenu(props){
+function NavigationMenu(props) {
     const isLoggenIn = useGlobalState("isLoggedIn")[0];
     if (isLoggenIn == false) {
-        return(
+        return (
             <div>
                 <div className="font-bold py-3">
                     PWA Blog
                 </div>
                 <ul>
                     <li>
-                        <Link 
-                            to="/" 
+                        <Link
+                            to="/"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
-                            Home
+                            Startseite
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/about" 
+                        <Link
+                            to="/about"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
-                            About
+                            Impressum
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/beitraege" 
+                        <Link
+                            to="/beitraege"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
@@ -39,8 +39,8 @@ function NavigationMenu(props){
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/uploadBeitrag" 
+                        <Link
+                            to="/uploadBeitrag"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
@@ -48,8 +48,8 @@ function NavigationMenu(props){
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/autoren" 
+                        <Link
+                            to="/autoren"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
@@ -57,38 +57,38 @@ function NavigationMenu(props){
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/register" 
+                        <Link
+                            to="/login"
+                            className='text-blue-500 py-3 border-t border.b block'
+                            onClick={props.closeMenu}
+                        >
+                            Einloggen
+                        </Link>
+                    </li>
+                    <li>
+                        <Link
+                            to="/register"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
                             Registrieren
                         </Link>
                     </li>
-                    <li>
-                        <Link 
-                            to="/login" 
-                            className='text-blue-500 py-3 border-t border.b block'
-                            onClick={props.closeMenu}
-                        >
-                            Login
-                        </Link>
-                    </li>
+
                 </ul>
             </div>
         )
-    } 
-    else
-    {
-        return(
+    }
+    else {
+        return (
             <div>
                 <div className="font-bold py-3">
                     PWA Blog
                 </div>
                 <ul>
                     <li>
-                        <Link 
-                            to="/" 
+                        <Link
+                            to="/"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
@@ -96,8 +96,8 @@ function NavigationMenu(props){
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/about" 
+                        <Link
+                            to="/about"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
@@ -105,8 +105,8 @@ function NavigationMenu(props){
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/beitraege" 
+                        <Link
+                            to="/beitraege"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
@@ -114,8 +114,8 @@ function NavigationMenu(props){
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/uploadBeitrag" 
+                        <Link
+                            to="/uploadBeitrag"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
@@ -123,8 +123,8 @@ function NavigationMenu(props){
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/autoren" 
+                        <Link
+                            to="/autoren"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >
@@ -132,8 +132,8 @@ function NavigationMenu(props){
                         </Link>
                     </li>
                     <li>
-                        <Link 
-                            to="/logout" 
+                        <Link
+                            to="/logout"
                             className='text-blue-500 py-3 border-t border.b block'
                             onClick={props.closeMenu}
                         >

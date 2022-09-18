@@ -11,10 +11,10 @@ function BeitragPreview(props) {
                     <span>Titel: {props.beitrag.title}</span>
                 </div>
                 <div>
-                    <span>Author: {props.beitrag.author}</span>
+                    <span>Autor: {props.beitrag.author}</span>
                 </div>
                 <div>
-                    <span>Verfasst am: {props.beitrag.creationTime}</span>
+                    <span>Verfasst am: {new Date(props.beitrag.creationTime).toLocaleString()}</span>
                 </div>
                 <div>
                     <span>Vorschau:

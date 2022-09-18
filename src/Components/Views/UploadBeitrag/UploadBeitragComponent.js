@@ -44,11 +44,11 @@ function UploadBeitragComponent() {
     switch (uploadSuccessful) {
         case true:
             content =
-                <div>successful</div>
+                <div>Erfolgreich</div>
             break;
         case false:
             content =
-                <div>unsuccessful</div>
+                <div>Nicht erfolgreich</div>
             break;
         case undefined:
             content =

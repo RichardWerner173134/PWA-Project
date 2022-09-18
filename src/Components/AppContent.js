@@ -58,6 +58,11 @@ function AppContent() {
                     path="/uploadBeitrag"
                     element={<UploadBeitragComponent />}
                 ></Route>
+                <Route 
+                    path="*" 
+                    element={<Home />} 
+                ></Route>
+
             </Routes>
         </div>
     )
